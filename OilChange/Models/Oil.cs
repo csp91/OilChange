@@ -8,21 +8,21 @@ namespace OilChange
 {
     public class Oil
     {
-        string oilweight;
-        string oilbrand;
-        double quantity;
-        double oilprice;
-        string filterbrand;
-        double filterprice;
+        public string Weight { get; }
+        public string Brand {get;}
+        public double Quantity {get;}
+        public double OilPrice {get;}
+        public string FBrand {get;}
+        public double FPrice {get;}
         
         public Oil(string weight, string obrand, double quant, double oprice, string fbrand, double fprice)
         {
-            oilweight = weight;
-            oilbrand = obrand;
-            quantity = quant;
-            oilprice = oprice;
-            filterbrand = fbrand;
-            filterprice = fprice;
+            Weight = weight;
+            Brand = obrand;
+            Quantity = quant;
+            OilPrice = oprice;
+            FBrand = fbrand;
+            FPrice = fprice;
         }
     }
 }

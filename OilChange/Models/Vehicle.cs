@@ -9,15 +9,15 @@ namespace OilChange
 {
     public class Vehicle
     {
-        public string make { get; }
-        public string model { get; }
-        public int year { get; }
+        public string Make { get; }
+        public string Model { get; }
+        public int Year { get; }
 
         public Vehicle(string inmake, string inmodel, int inyear)
         {
-            make = inmake;
-            model = inmodel;
-            year = inyear;
+            Make = inmake;
+            Model = inmodel;
+            Year = inyear;
         }
     }
 }

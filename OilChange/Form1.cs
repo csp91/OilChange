@@ -26,9 +26,9 @@ namespace OilChange
                 if (gridCarSelect.SelectedRows.Count > 0)
                 {
                     Vehicle selectedCar = (Vehicle)gridCarSelect.SelectedRows[0].DataBoundItem;
-                    makeTextBox.Text = selectedCar.make;
-                    modelTextBox.Text = selectedCar.model;
-                    yearTextBox.Text = selectedCar.year.ToString();
+                    makeTextBox.Text = selectedCar.Make;
+                    modelTextBox.Text = selectedCar.Model;
+                    yearTextBox.Text = selectedCar.Year.ToString();
                 }
 
             } catch(Exception)
