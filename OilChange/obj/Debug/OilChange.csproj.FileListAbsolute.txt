@@ -7,3 +7,4 @@ C:\Users\Chris\source\repos\OilChange\OilChange\obj\Debug\OilChange.csproj.Gener
 C:\Users\Chris\source\repos\OilChange\OilChange\obj\Debug\OilChange.csproj.CoreCompileInputs.cache
 C:\Users\Chris\source\repos\OilChange\OilChange\obj\Debug\OilChange.exe
 C:\Users\Chris\source\repos\OilChange\OilChange\obj\Debug\OilChange.pdb
+C:\Users\Chris\source\repos\OilChange\OilChange\obj\Debug\OilChange.Form1.resources

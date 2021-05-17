@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.gridCarSelect = new System.Windows.Forms.DataGridView();
-            this.make = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridOilLog = new System.Windows.Forms.DataGridView();
             this.weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +61,9 @@
             this.removeLogBtn = new System.Windows.Forms.Button();
             this.updateLogBtn = new System.Windows.Forms.Button();
             this.downloadLogBtn = new System.Windows.Forms.Button();
+            this.make = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridOilLog)).BeginInit();
             this.SuspendLayout();
@@ -77,31 +77,10 @@
             this.year});
             this.gridCarSelect.Location = new System.Drawing.Point(503, 45);
             this.gridCarSelect.Name = "gridCarSelect";
+            this.gridCarSelect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCarSelect.Size = new System.Drawing.Size(775, 231);
             this.gridCarSelect.TabIndex = 0;
-            // 
-            // make
-            // 
-            this.make.DataPropertyName = "make";
-            this.make.HeaderText = "Make";
-            this.make.Name = "make";
-            this.make.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.make.Width = 130;
-            // 
-            // model
-            // 
-            this.model.DataPropertyName = "model";
-            this.model.HeaderText = "Model";
-            this.model.Name = "model";
-            this.model.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.model.Width = 160;
-            // 
-            // year
-            // 
-            this.year.DataPropertyName = "year";
-            this.year.HeaderText = "Year";
-            this.year.Name = "year";
-            this.year.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridCarSelect.SelectionChanged += new System.EventHandler(this.gridCarSelect_SelectionChanged);
             // 
             // gridOilLog
             // 
@@ -115,6 +94,7 @@
             this.fPrice});
             this.gridOilLog.Location = new System.Drawing.Point(503, 306);
             this.gridOilLog.Name = "gridOilLog";
+            this.gridOilLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridOilLog.Size = new System.Drawing.Size(775, 411);
             this.gridOilLog.TabIndex = 1;
             // 
@@ -370,6 +350,32 @@
             this.downloadLogBtn.Text = "Download Log";
             this.downloadLogBtn.UseVisualStyleBackColor = true;
             // 
+            // make
+            // 
+            this.make.DataPropertyName = "make";
+            this.make.HeaderText = "Make";
+            this.make.Name = "make";
+            this.make.ReadOnly = true;
+            this.make.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.make.Width = 130;
+            // 
+            // model
+            // 
+            this.model.DataPropertyName = "model";
+            this.model.HeaderText = "Model";
+            this.model.Name = "model";
+            this.model.ReadOnly = true;
+            this.model.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.model.Width = 160;
+            // 
+            // year
+            // 
+            this.year.DataPropertyName = "year";
+            this.year.HeaderText = "Year";
+            this.year.Name = "year";
+            this.year.ReadOnly = true;
+            this.year.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,7 +409,8 @@
             this.Controls.Add(this.gridOilLog);
             this.Controls.Add(this.gridCarSelect);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Oil Change Tracker";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridCarSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridOilLog)).EndInit();
             this.ResumeLayout(false);
@@ -414,9 +421,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView gridCarSelect;
-        private System.Windows.Forms.DataGridViewTextBoxColumn make;
-        private System.Windows.Forms.DataGridViewTextBoxColumn model;
-        private System.Windows.Forms.DataGridViewTextBoxColumn year;
         private System.Windows.Forms.DataGridView gridOilLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn weight;
         private System.Windows.Forms.DataGridViewTextBoxColumn brand;
@@ -449,6 +453,9 @@
         private System.Windows.Forms.Button removeLogBtn;
         private System.Windows.Forms.Button updateLogBtn;
         private System.Windows.Forms.Button downloadLogBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn make;
+        private System.Windows.Forms.DataGridViewTextBoxColumn model;
+        private System.Windows.Forms.DataGridViewTextBoxColumn year;
     }
 }
 
