@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OilChange.Dto;
+using OilChange.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace OilChange.Services
 {
-    class VehicleService : IVehicle
+    class VehicleService : IVehicle, ICarServiceLog
     {
+
         public List<Vehicle> GetVehicles()
         {
             List<Vehicle> cars = new List<Vehicle>();
@@ -18,5 +21,15 @@ namespace OilChange.Services
 
             return cars;
         }
+
+        public CarServiceLog GetCarServiceLog(int id)
+        {
+                
+                CarServiceLog carLog = new CarServiceLog();
+                throw new NoDataFoundException("Car does not exist");
+                return carLog;
+
+        }
+
     }
 }

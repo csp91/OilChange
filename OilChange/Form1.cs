@@ -1,8 +1,9 @@
 ﻿using OilChange.Services;
 using System;
 using System.Windows.Forms;
-
-
+using OilChange.Controller;
+using System.IO;
+using System.Collections.Generic;
 namespace OilChange
 {
     public partial class Form1 : Form
@@ -14,8 +15,22 @@ namespace OilChange
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            VehicleService vService = new VehicleService();
-            gridCarSelect.DataSource = vService.GetVehicles();
+            var enumLines = File.ReadLines("G:\\temp\\test.csv");
+
+            List<Vehicle> cars = new List<Vehicle>();
+
+            foreach (var line in enumLines)
+            {
+                string[] carData = line.Split(',');
+
+
+                Vehicle temp = new Vehicle(carData[0], carData[1], Int32.Parse(carData[2]));
+
+                cars.Add(temp);
+            }
+
+            gridCarSelect.DataSource = cars;
+
         }
 
 
@@ -37,6 +52,13 @@ namespace OilChange
             }
 
 
+        }
+
+        private void addCarBtn_Click(object sender, EventArgs e)
+        {
+            CarController carCtrl = new CarController();
+
+            carCtrl.Add(makeTextBox.Text, modelTextBox.Text, yearTextBox.Text);
         }
     }
 }

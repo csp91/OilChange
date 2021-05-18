@@ -33,6 +33,16 @@
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridOilLog = new System.Windows.Forms.DataGridView();
+            this.servicedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicedMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nextServiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nextServiceMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.oilPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.makeTextBox = new System.Windows.Forms.TextBox();
             this.modelTextBox = new System.Windows.Forms.TextBox();
             this.yearTextBox = new System.Windows.Forms.TextBox();
@@ -64,16 +74,6 @@
             this.nextServiceLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.nextServiceMileageLabel = new System.Windows.Forms.Label();
-            this.servicedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicedMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nextServiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nextServiceMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.oilPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridOilLog)).BeginInit();
             this.SuspendLayout();
@@ -137,6 +137,90 @@
             this.gridOilLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridOilLog.Size = new System.Drawing.Size(991, 411);
             this.gridOilLog.TabIndex = 1;
+            // 
+            // servicedDate
+            // 
+            this.servicedDate.DataPropertyName = "servicedDate";
+            this.servicedDate.HeaderText = "Serviced Date";
+            this.servicedDate.Name = "servicedDate";
+            this.servicedDate.ReadOnly = true;
+            this.servicedDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.servicedDate.Width = 90;
+            // 
+            // servicedMileage
+            // 
+            this.servicedMileage.DataPropertyName = "servicedMileage";
+            this.servicedMileage.HeaderText = "Serviced Mileage";
+            this.servicedMileage.Name = "servicedMileage";
+            this.servicedMileage.ReadOnly = true;
+            this.servicedMileage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.servicedMileage.Width = 90;
+            // 
+            // nextServiceDate
+            // 
+            this.nextServiceDate.DataPropertyName = "nextServiceDate";
+            this.nextServiceDate.HeaderText = "Next Service";
+            this.nextServiceDate.Name = "nextServiceDate";
+            this.nextServiceDate.ReadOnly = true;
+            this.nextServiceDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.nextServiceDate.Width = 90;
+            // 
+            // nextServiceMileage
+            // 
+            this.nextServiceMileage.DataPropertyName = "nextServiceMileage";
+            this.nextServiceMileage.HeaderText = "Next Service Mileage";
+            this.nextServiceMileage.Name = "nextServiceMileage";
+            this.nextServiceMileage.ReadOnly = true;
+            this.nextServiceMileage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.nextServiceMileage.Width = 90;
+            // 
+            // weight
+            // 
+            this.weight.DataPropertyName = "weight";
+            this.weight.HeaderText = "Weight";
+            this.weight.Name = "weight";
+            this.weight.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.weight.Width = 90;
+            // 
+            // brand
+            // 
+            this.brand.DataPropertyName = "brand";
+            this.brand.HeaderText = "Brand";
+            this.brand.Name = "brand";
+            this.brand.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.brand.Width = 140;
+            // 
+            // quantity
+            // 
+            this.quantity.DataPropertyName = "quantity";
+            this.quantity.HeaderText = "Qty";
+            this.quantity.Name = "quantity";
+            this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.quantity.Width = 60;
+            // 
+            // oilPrice
+            // 
+            this.oilPrice.DataPropertyName = "oilPrice";
+            this.oilPrice.HeaderText = "Oil Price";
+            this.oilPrice.Name = "oilPrice";
+            this.oilPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.oilPrice.Width = 80;
+            // 
+            // fBrand
+            // 
+            this.fBrand.DataPropertyName = "fBrand";
+            this.fBrand.HeaderText = "Filter Brand";
+            this.fBrand.Name = "fBrand";
+            this.fBrand.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.fBrand.Width = 140;
+            // 
+            // fPrice
+            // 
+            this.fPrice.DataPropertyName = "fPrice";
+            this.fPrice.HeaderText = "Filter Price";
+            this.fPrice.Name = "fPrice";
+            this.fPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.fPrice.Width = 80;
             // 
             // makeTextBox
             // 
@@ -290,6 +374,7 @@
             this.addCarBtn.TabIndex = 20;
             this.addCarBtn.Text = "Add";
             this.addCarBtn.UseVisualStyleBackColor = true;
+            this.addCarBtn.Click += new System.EventHandler(this.addCarBtn_Click);
             // 
             // removeCarBtn
             // 
@@ -396,90 +481,6 @@
             this.nextServiceMileageLabel.Size = new System.Drawing.Size(108, 13);
             this.nextServiceMileageLabel.TabIndex = 32;
             this.nextServiceMileageLabel.Text = "Next Service Mileage";
-            // 
-            // servicedDate
-            // 
-            this.servicedDate.DataPropertyName = "servicedDate";
-            this.servicedDate.HeaderText = "Serviced Date";
-            this.servicedDate.Name = "servicedDate";
-            this.servicedDate.ReadOnly = true;
-            this.servicedDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.servicedDate.Width = 90;
-            // 
-            // servicedMileage
-            // 
-            this.servicedMileage.DataPropertyName = "servicedMileage";
-            this.servicedMileage.HeaderText = "Serviced Mileage";
-            this.servicedMileage.Name = "servicedMileage";
-            this.servicedMileage.ReadOnly = true;
-            this.servicedMileage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.servicedMileage.Width = 90;
-            // 
-            // nextServiceDate
-            // 
-            this.nextServiceDate.DataPropertyName = "nextServiceDate";
-            this.nextServiceDate.HeaderText = "Next Service";
-            this.nextServiceDate.Name = "nextServiceDate";
-            this.nextServiceDate.ReadOnly = true;
-            this.nextServiceDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.nextServiceDate.Width = 90;
-            // 
-            // nextServiceMileage
-            // 
-            this.nextServiceMileage.DataPropertyName = "nextServiceMileage";
-            this.nextServiceMileage.HeaderText = "Next Service Mileage";
-            this.nextServiceMileage.Name = "nextServiceMileage";
-            this.nextServiceMileage.ReadOnly = true;
-            this.nextServiceMileage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.nextServiceMileage.Width = 90;
-            // 
-            // weight
-            // 
-            this.weight.DataPropertyName = "weight";
-            this.weight.HeaderText = "Weight";
-            this.weight.Name = "weight";
-            this.weight.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.weight.Width = 90;
-            // 
-            // brand
-            // 
-            this.brand.DataPropertyName = "brand";
-            this.brand.HeaderText = "Brand";
-            this.brand.Name = "brand";
-            this.brand.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.brand.Width = 140;
-            // 
-            // quantity
-            // 
-            this.quantity.DataPropertyName = "quantity";
-            this.quantity.HeaderText = "Qty";
-            this.quantity.Name = "quantity";
-            this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.quantity.Width = 60;
-            // 
-            // oilPrice
-            // 
-            this.oilPrice.DataPropertyName = "oilPrice";
-            this.oilPrice.HeaderText = "Oil Price";
-            this.oilPrice.Name = "oilPrice";
-            this.oilPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.oilPrice.Width = 80;
-            // 
-            // fBrand
-            // 
-            this.fBrand.DataPropertyName = "fBrand";
-            this.fBrand.HeaderText = "Filter Brand";
-            this.fBrand.Name = "fBrand";
-            this.fBrand.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.fBrand.Width = 140;
-            // 
-            // fPrice
-            // 
-            this.fPrice.DataPropertyName = "fPrice";
-            this.fPrice.HeaderText = "Filter Price";
-            this.fPrice.Name = "fPrice";
-            this.fPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.fPrice.Width = 80;
             // 
             // Form1
             // 
