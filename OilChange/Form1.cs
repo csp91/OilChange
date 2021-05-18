@@ -3,7 +3,11 @@ using System.Windows.Forms;
 using OilChange.Controller;
 using System.IO;
 using static OilChange.Util.CsvParser;
+using static OilChange.Util.Toggler;
 using System.Collections.Generic;
+using OilChange.Dto;
+using System.ComponentModel;
+using OilChange.Exceptions;
 
 namespace OilChange
 {
@@ -12,59 +16,59 @@ namespace OilChange
         string fileTarget = Global.FileTarget;
         IEnumerable<string> eLines;
         CarController carCtrl;
+        BindingList<CarMaintLog> src;
 
         public Form1()
         {
             InitializeComponent();
             carCtrl = new CarController();
+            Global.FilePathChanged += new EventHandler<string>(OnFilePathChanged);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
+                folderPathLabel.Text = "Data path: " + fileTarget;
+
                 eLines = File.ReadLines(fileTarget);
+                updateSource(ParseFile(eLines));
 
-                gridCarSelect.DataSource = ParseFile(eLines);
-
-
-
-            } catch { }
+            } catch
+            {
+            }
         }
 
-
-        private void gridCarSelect_SelectionChanged(object sender, EventArgs e)
+        private void OnFilePathChanged(object sender, string e)
         {
-
-        }
-
-        private static void OnChanged(object sender, FileSystemEventArgs e)
-        {
-
+            fileTarget = e;
+            folderPathLabel.Text = "Data Path: " + e;
         }
 
         private void addCarBtn_Click(object sender, EventArgs e)
         {
             if (!makeTextBox.ReadOnly)
             {
+                try
+                {
+                    carCtrl.AddCar(makeTextBox.Text, modelTextBox.Text, yearTextBox.Text);
 
-                carCtrl.AddCar(makeTextBox.Text, modelTextBox.Text, yearTextBox.Text);
+                    eLines = File.ReadLines(fileTarget);
+                    updateSource(ParseFile(eLines));
+                }
+                catch 
+                {
+                  
+                }
 
-                makeTextBox.ReadOnly = true;
-                modelTextBox.ReadOnly = true;
-                yearTextBox.ReadOnly = true;
 
-                eLines = File.ReadLines(fileTarget);
-                gridCarSelect.DataSource = ParseFile(eLines);
+                gridCarSelect.ClearSelection();
 
+                ToggleReadOnly(new object[] { makeTextBox, modelTextBox, yearTextBox });
                 return;
-
-
             }
 
-            makeTextBox.ReadOnly = false;
-            modelTextBox.ReadOnly = false;
-            yearTextBox.ReadOnly = false;
+            ToggleReadOnly(new object[] { makeTextBox, modelTextBox, yearTextBox });
         }
 
         private void gridCarSelect_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -73,7 +77,7 @@ namespace OilChange
             {
                 if (gridCarSelect.SelectedRows.Count > 0)
                 {
-                    Vehicle selectedCar = (Vehicle)gridCarSelect.SelectedRows[0].DataBoundItem;
+                    CarMaintLog selectedCar = (CarMaintLog) gridCarSelect.SelectedRows[0].DataBoundItem;
 
                     if (selectedCar != null)
                     {
@@ -90,6 +94,12 @@ namespace OilChange
             {
 
             }
+        }
+
+        private void updateSource(List<CarMaintLog> s)
+        {
+            src = new BindingList<CarMaintLog>(s);
+            gridCarSelect.DataSource = src;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OilChange.Dto
 {
-    class OilChange
+    class OilChangeInfo
     {
         public Oil Oil {get; }
         public DateTime ServicedDate { get; set; }

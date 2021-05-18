@@ -12,4 +12,15 @@ namespace OilChange.Exceptions
         {
         }
     }
+
+    class InvalidValueException : Exception
+    {
+        public InvalidValueException()
+        {
+        }
+
+        public InvalidValueException(String message) : base(message)
+        {
+        }
+    }
 }

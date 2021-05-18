@@ -17,7 +17,7 @@ namespace OilChange.Services
         public CarMaintLog GetCarMaintLog(int id)
         {
                 
-                CarMaintLog carLog = new CarMaintLog();
+                CarMaintLog carLog = null;
                 throw new NoDataFoundException("Car does not exist");
                 return carLog;
 
@@ -36,6 +36,7 @@ namespace OilChange.Services
                 if (!File.Exists(fileTarget))
                 {
                     File.Create(fileTarget).Close();
+                    //Global.FileChanged("CREATED");
 
                     for(int i = 0; i > 3; i++)
                     {
@@ -60,12 +61,17 @@ namespace OilChange.Services
                     }
                 }
 
-                await sw.WriteLineAsync(String.Format("{0},{1},{2},{3}", nextId, make, model, year));
+                if (make == "" || model == "" || !Int32.TryParse(year, out int x)) throw new InvalidValueException();
+                await sw.WriteLineAsync(String.Format("{0},{1},{2},{3},{4}", nextId, make, model, year, "[]"));
 
             }
-            catch (Exception e)
+            catch (InvalidValueException)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Unable to parse a value because it is empty or invalid");
+            }
+            catch (Exception)
+            {
+                
             }
             finally
             {

@@ -74,6 +74,7 @@
             this.nextServiceLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.nextServiceMileageLabel = new System.Windows.Forms.Label();
+            this.folderPathLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridOilLog)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +92,6 @@
             this.gridCarSelect.Size = new System.Drawing.Size(991, 231);
             this.gridCarSelect.TabIndex = 0;
             this.gridCarSelect.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCarSelect_CellClick);
-            this.gridCarSelect.SelectionChanged += new System.EventHandler(this.gridCarSelect_SelectionChanged);
             // 
             // make
             // 
@@ -486,11 +486,20 @@
             this.nextServiceMileageLabel.TabIndex = 32;
             this.nextServiceMileageLabel.Text = "Next Service Mileage";
             // 
+            // folderPathLabel
+            // 
+            this.folderPathLabel.AutoSize = true;
+            this.folderPathLabel.Location = new System.Drawing.Point(503, 13);
+            this.folderPathLabel.Name = "folderPathLabel";
+            this.folderPathLabel.Size = new System.Drawing.Size(0, 13);
+            this.folderPathLabel.TabIndex = 33;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1519, 764);
+            this.Controls.Add(this.folderPathLabel);
             this.Controls.Add(this.nextServiceMileageLabel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.nextServiceLabel);
@@ -582,6 +591,7 @@
         private System.Windows.Forms.Label nextServiceLabel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label nextServiceMileageLabel;
+        private System.Windows.Forms.Label folderPathLabel;
     }
 }
 

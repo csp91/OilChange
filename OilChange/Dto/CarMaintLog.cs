@@ -10,9 +10,21 @@ namespace OilChange.Dto
 {
     class CarMaintLog
     {
+        [System.ComponentModel.Browsable(false)]
         public int Id { get; set; }
-        public Vehicle Car { get; }
-        public List<OilChange> OilChanges {get; }
+        public string Make { get; }
+        public string Model { get; }
+        public string Year { get; }
+        public List<OilChangeInfo> OilChanges {get; }
+
+        public CarMaintLog(int id, Vehicle car, List<OilChangeInfo> oilChanges)
+        {
+            Id = id;
+            Make = car.Make;
+            Model = car.Model;
+            Year = car.Year.ToString();
+            OilChanges = oilChanges;
+        }
 
         public override bool Equals(object obj)
         {
