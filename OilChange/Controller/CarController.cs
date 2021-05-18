@@ -13,30 +13,27 @@ namespace OilChange.Controller
         public void Add(string make, string model, string year)
         {
             string fileTarget = "G:\\temp\\test.csv";
-            FileStream fs = null;
+            StreamWriter sw = null;
 
             try
             {
                 if (File.Exists(fileTarget))
                 {
-                    fs = File.OpenWrite(fileTarget);
+                    sw = new StreamWriter(fileTarget, append:true);
                 }
                 else
                 {
-                    fs = File.Create(fileTarget);
+                    File.Create(fileTarget);
+                    sw = new StreamWriter(fileTarget, append: true);
                 }
 
-                //Serialize
-                byte[] info = new UTF8Encoding(true).GetBytes(String.Format("{0},{1},{2}",make,model,year));
-
-                //Write to file
-                fs.Write(info, 0, info.Length);
+                sw.WriteLine(String.Format("{0},{1},{2}", make, model, year));
 
             }
             catch (Exception e) {
                 MessageBox.Show(e.Message); 
             }
-            finally { if (fs != null) fs.Close(); };
+            finally { if (sw != null) sw.Close(); };
 
 
             //Locate csv file if exists
