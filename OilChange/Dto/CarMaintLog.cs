@@ -8,7 +8,7 @@ using OilChange;
 //Data Transfer Object
 namespace OilChange.Dto
 {
-    class CarServiceLog
+    class CarMaintLog
     {
         public int Id { get; set; }
         public Vehicle Car { get; }

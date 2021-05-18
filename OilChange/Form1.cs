@@ -1,64 +1,95 @@
-﻿using OilChange.Services;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using OilChange.Controller;
 using System.IO;
+using static OilChange.Util.CsvParser;
 using System.Collections.Generic;
+
 namespace OilChange
 {
     public partial class Form1 : Form
     {
+        string fileTarget = Global.FileTarget;
+        IEnumerable<string> eLines;
+        CarController carCtrl;
+
         public Form1()
         {
             InitializeComponent();
+            carCtrl = new CarController();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var enumLines = File.ReadLines("G:\\temp\\test.csv");
-
-            List<Vehicle> cars = new List<Vehicle>();
-
-            foreach (var line in enumLines)
+            try
             {
-                string[] carData = line.Split(',');
+                eLines = File.ReadLines(fileTarget);
+
+                gridCarSelect.DataSource = ParseFile(eLines);
 
 
-                Vehicle temp = new Vehicle(carData[0], carData[1], Int32.Parse(carData[2]));
 
-                cars.Add(temp);
-            }
-
-            gridCarSelect.DataSource = cars;
-
+            } catch { }
         }
 
 
         private void gridCarSelect_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private static void OnChanged(object sender, FileSystemEventArgs e)
+        {
+
+        }
+
+        private void addCarBtn_Click(object sender, EventArgs e)
+        {
+            if (!makeTextBox.ReadOnly)
+            {
+
+                carCtrl.AddCar(makeTextBox.Text, modelTextBox.Text, yearTextBox.Text);
+
+                makeTextBox.ReadOnly = true;
+                modelTextBox.ReadOnly = true;
+                yearTextBox.ReadOnly = true;
+
+                eLines = File.ReadLines(fileTarget);
+                gridCarSelect.DataSource = ParseFile(eLines);
+
+                return;
+
+
+            }
+
+            makeTextBox.ReadOnly = false;
+            modelTextBox.ReadOnly = false;
+            yearTextBox.ReadOnly = false;
+        }
+
+        private void gridCarSelect_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 if (gridCarSelect.SelectedRows.Count > 0)
                 {
                     Vehicle selectedCar = (Vehicle)gridCarSelect.SelectedRows[0].DataBoundItem;
-                    makeTextBox.Text = selectedCar.Make;
-                    modelTextBox.Text = selectedCar.Model;
-                    yearTextBox.Text = selectedCar.Year.ToString();
+
+                    if (selectedCar != null)
+                    {
+                        makeTextBox.Text = selectedCar.Make;
+                        modelTextBox.Text = selectedCar.Model;
+                        yearTextBox.Text = selectedCar.Year.ToString();
+                    }
+
+
                 }
 
-            } catch(Exception)
+            }
+            catch (Exception)
             {
 
             }
-
-
-        }
-
-        private void addCarBtn_Click(object sender, EventArgs e)
-        {
-            CarController carCtrl = new CarController();
-
-            carCtrl.Add(makeTextBox.Text, modelTextBox.Text, yearTextBox.Text);
         }
     }
 }

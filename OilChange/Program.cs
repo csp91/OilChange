@@ -3,6 +3,11 @@ using System.Windows.Forms;
 
 namespace OilChange
 {
+    static class Global
+    {
+        public static string FileTarget { get; set; } = "G:\\temp\\test.csv";
+
+    }
     static class Program
     {
         /// <summary>

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace OilChange.Services
 {
-    interface ICarServiceLog
+    interface ICarService
     {
-        CarServiceLog GetCarServiceLog(int id);
+        CarMaintLog GetCarMaintLog(int id);
+
+        void AddVehicleService(string make, string model, string year);
     }
 }

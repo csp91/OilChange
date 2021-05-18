@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Controller\CarController.cs" />
     <Compile Include="Dto\OilChange.cs" />
-    <Compile Include="Dto\CarServiceLog.cs" />
+    <Compile Include="Dto\CarMaintLog.cs" />
     <Compile Include="Exceptions\NoDataFoundEx.cs" />
     <Compile Include="Models\Oil.cs" />
     <Compile Include="Models\Vehicle.cs" />
@@ -60,9 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ICarServiceLog.cs" />
-    <Compile Include="Services\IVehicle.cs" />
+    <Compile Include="Services\ICarService.cs" />
     <Compile Include="Services\VehicleService.cs" />
+    <Compile Include="Util\CsvParser.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -90,6 +90,7 @@
             this.gridCarSelect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCarSelect.Size = new System.Drawing.Size(991, 231);
             this.gridCarSelect.TabIndex = 0;
+            this.gridCarSelect.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCarSelect_CellClick);
             this.gridCarSelect.SelectionChanged += new System.EventHandler(this.gridCarSelect_SelectionChanged);
             // 
             // make
@@ -226,6 +227,7 @@
             // 
             this.makeTextBox.Location = new System.Drawing.Point(28, 64);
             this.makeTextBox.Name = "makeTextBox";
+            this.makeTextBox.ReadOnly = true;
             this.makeTextBox.Size = new System.Drawing.Size(115, 20);
             this.makeTextBox.TabIndex = 2;
             // 
@@ -233,6 +235,7 @@
             // 
             this.modelTextBox.Location = new System.Drawing.Point(156, 64);
             this.modelTextBox.Name = "modelTextBox";
+            this.modelTextBox.ReadOnly = true;
             this.modelTextBox.Size = new System.Drawing.Size(160, 20);
             this.modelTextBox.TabIndex = 3;
             // 
@@ -240,6 +243,7 @@
             // 
             this.yearTextBox.Location = new System.Drawing.Point(331, 64);
             this.yearTextBox.Name = "yearTextBox";
+            this.yearTextBox.ReadOnly = true;
             this.yearTextBox.Size = new System.Drawing.Size(100, 20);
             this.yearTextBox.TabIndex = 4;
             // 

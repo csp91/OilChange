@@ -5,42 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using OilChange.Services;
 
 namespace OilChange.Controller
 {
     class CarController
     {
-        public void Add(string make, string model, string year)
+        public void AddCar(string make, string model, string year)
         {
-            string fileTarget = "G:\\temp\\test.csv";
-            StreamWriter sw = null;
+            VehicleService server = new VehicleService();
 
             try
             {
-                if (File.Exists(fileTarget))
-                {
-                    sw = new StreamWriter(fileTarget, append:true);
-                }
-                else
-                {
-                    File.Create(fileTarget);
-                    sw = new StreamWriter(fileTarget, append: true);
-                }
-
-                sw.WriteLine(String.Format("{0},{1},{2}", make, model, year));
-
+                server.AddVehicleService(make, model, year);
             }
-            catch (Exception e) {
-                MessageBox.Show(e.Message); 
-            }
-            finally { if (sw != null) sw.Close(); };
-
-
-            //Locate csv file if exists
-
-            //Auto generated Id
-                
-            //
+            catch { }
+            
         }
 
         //Update the selected car + oilchange history associated with it
