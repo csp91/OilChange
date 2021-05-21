@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CarController.cs" />
-    <Compile Include="Dto\OilChange.cs" />
+    <Compile Include="Dto\OilChangeInfo.cs" />
     <Compile Include="Dto\CarMaintLog.cs" />
     <Compile Include="Exceptions\CustomExceptions.cs" />
     <Compile Include="Models\Oil.cs" />

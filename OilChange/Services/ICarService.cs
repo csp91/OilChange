@@ -9,8 +9,6 @@ namespace OilChange.Services
 {
     interface ICarService
     {
-        CarMaintLog GetCarMaintLog(int id);
-
         void AddVehicleService(string make, string model, string year);
     }
 }

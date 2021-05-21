@@ -14,18 +14,9 @@ namespace OilChange.Services
     class VehicleService : ICarService
     {
 
-        public CarMaintLog GetCarMaintLog(int id)
-        {
-                
-                CarMaintLog carLog = null;
-                throw new NoDataFoundException("Car does not exist");
-                return carLog;
-
-        }
-
         public async void AddVehicleService(string make, string model, string year)
         {
-            string fileTarget = Global.FileTarget;
+            string fileTarget = Global.FileTargetPath;
             FileStream fsw = null;
             FileStream fsr = null;
             StreamWriter sw = null;
@@ -36,7 +27,6 @@ namespace OilChange.Services
                 if (!File.Exists(fileTarget))
                 {
                     File.Create(fileTarget).Close();
-                    //Global.FileChanged("CREATED");
 
                     for(int i = 0; i > 3; i++)
                     {

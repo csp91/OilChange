@@ -17,11 +17,11 @@ namespace OilChange
         
         public Oil(string weight, string obrand, double quant, double oprice, string fbrand, double fprice)
         {
-            Weight = weight;
-            Brand = obrand;
+            Weight = weight == "" ? "Unknown" : weight;
+            Brand = obrand == "" ? "Unknown" : obrand;
             Quantity = quant;
             OilPrice = oprice;
-            FBrand = fbrand;
+            FBrand = fbrand == "" ? "Unknown" : fbrand;
             FPrice = fprice;
         }
     }

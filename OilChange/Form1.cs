@@ -13,7 +13,7 @@ namespace OilChange
 {
     public partial class Form1 : Form
     {
-        string fileTarget = Global.FileTarget;
+        string fileTarget = Global.FileTargetPath;
         IEnumerable<string> eLines;
         CarController carCtrl;
         BindingList<CarMaintLog> src;
@@ -36,6 +36,7 @@ namespace OilChange
 
             } catch
             {
+
             }
         }
 
@@ -86,6 +87,8 @@ namespace OilChange
                         yearTextBox.Text = selectedCar.Year.ToString();
                     }
 
+                    
+                     gridOilLog.DataSource = selectedCar.OilChanges;
 
                 }
 
@@ -101,5 +104,11 @@ namespace OilChange
             src = new BindingList<CarMaintLog>(s);
             gridCarSelect.DataSource = src;
         }
+
+        private void gridCarSelect_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            gridCarSelect.ClearSelection();
+        }
+
     }
 }

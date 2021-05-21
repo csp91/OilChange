@@ -33,16 +33,6 @@
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridOilLog = new System.Windows.Forms.DataGridView();
-            this.servicedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicedMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nextServiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nextServiceMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.oilPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.makeTextBox = new System.Windows.Forms.TextBox();
             this.modelTextBox = new System.Windows.Forms.TextBox();
             this.yearTextBox = new System.Windows.Forms.TextBox();
@@ -75,12 +65,23 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.nextServiceMileageLabel = new System.Windows.Forms.Label();
             this.folderPathLabel = new System.Windows.Forms.Label();
+            this.servicedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicedMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nextServiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nextServiceMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.oilPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridOilLog)).BeginInit();
             this.SuspendLayout();
             // 
             // gridCarSelect
             // 
+            this.gridCarSelect.AllowUserToResizeRows = false;
             this.gridCarSelect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCarSelect.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.make,
@@ -92,6 +93,7 @@
             this.gridCarSelect.Size = new System.Drawing.Size(991, 231);
             this.gridCarSelect.TabIndex = 0;
             this.gridCarSelect.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCarSelect_CellClick);
+            this.gridCarSelect.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridCarSelect_DataBindingComplete);
             // 
             // make
             // 
@@ -121,6 +123,10 @@
             // 
             // gridOilLog
             // 
+            this.gridOilLog.AllowUserToAddRows = false;
+            this.gridOilLog.AllowUserToDeleteRows = false;
+            this.gridOilLog.AllowUserToResizeColumns = false;
+            this.gridOilLog.AllowUserToResizeRows = false;
             this.gridOilLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridOilLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.servicedDate,
@@ -138,90 +144,6 @@
             this.gridOilLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridOilLog.Size = new System.Drawing.Size(991, 411);
             this.gridOilLog.TabIndex = 1;
-            // 
-            // servicedDate
-            // 
-            this.servicedDate.DataPropertyName = "servicedDate";
-            this.servicedDate.HeaderText = "Serviced Date";
-            this.servicedDate.Name = "servicedDate";
-            this.servicedDate.ReadOnly = true;
-            this.servicedDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.servicedDate.Width = 90;
-            // 
-            // servicedMileage
-            // 
-            this.servicedMileage.DataPropertyName = "servicedMileage";
-            this.servicedMileage.HeaderText = "Serviced Mileage";
-            this.servicedMileage.Name = "servicedMileage";
-            this.servicedMileage.ReadOnly = true;
-            this.servicedMileage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.servicedMileage.Width = 90;
-            // 
-            // nextServiceDate
-            // 
-            this.nextServiceDate.DataPropertyName = "nextServiceDate";
-            this.nextServiceDate.HeaderText = "Next Service";
-            this.nextServiceDate.Name = "nextServiceDate";
-            this.nextServiceDate.ReadOnly = true;
-            this.nextServiceDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.nextServiceDate.Width = 90;
-            // 
-            // nextServiceMileage
-            // 
-            this.nextServiceMileage.DataPropertyName = "nextServiceMileage";
-            this.nextServiceMileage.HeaderText = "Next Service Mileage";
-            this.nextServiceMileage.Name = "nextServiceMileage";
-            this.nextServiceMileage.ReadOnly = true;
-            this.nextServiceMileage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.nextServiceMileage.Width = 90;
-            // 
-            // weight
-            // 
-            this.weight.DataPropertyName = "weight";
-            this.weight.HeaderText = "Weight";
-            this.weight.Name = "weight";
-            this.weight.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.weight.Width = 90;
-            // 
-            // brand
-            // 
-            this.brand.DataPropertyName = "brand";
-            this.brand.HeaderText = "Brand";
-            this.brand.Name = "brand";
-            this.brand.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.brand.Width = 140;
-            // 
-            // quantity
-            // 
-            this.quantity.DataPropertyName = "quantity";
-            this.quantity.HeaderText = "Qty";
-            this.quantity.Name = "quantity";
-            this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.quantity.Width = 60;
-            // 
-            // oilPrice
-            // 
-            this.oilPrice.DataPropertyName = "oilPrice";
-            this.oilPrice.HeaderText = "Oil Price";
-            this.oilPrice.Name = "oilPrice";
-            this.oilPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.oilPrice.Width = 80;
-            // 
-            // fBrand
-            // 
-            this.fBrand.DataPropertyName = "fBrand";
-            this.fBrand.HeaderText = "Filter Brand";
-            this.fBrand.Name = "fBrand";
-            this.fBrand.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.fBrand.Width = 140;
-            // 
-            // fPrice
-            // 
-            this.fPrice.DataPropertyName = "fPrice";
-            this.fPrice.HeaderText = "Filter Price";
-            this.fPrice.Name = "fPrice";
-            this.fPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.fPrice.Width = 80;
             // 
             // makeTextBox
             // 
@@ -494,6 +416,90 @@
             this.folderPathLabel.Size = new System.Drawing.Size(0, 13);
             this.folderPathLabel.TabIndex = 33;
             // 
+            // servicedDate
+            // 
+            this.servicedDate.DataPropertyName = "servicedDate";
+            this.servicedDate.HeaderText = "Serviced Date";
+            this.servicedDate.Name = "servicedDate";
+            this.servicedDate.ReadOnly = true;
+            this.servicedDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.servicedDate.Width = 90;
+            // 
+            // servicedMileage
+            // 
+            this.servicedMileage.DataPropertyName = "servicedMileage";
+            this.servicedMileage.HeaderText = "Serviced Mileage";
+            this.servicedMileage.Name = "servicedMileage";
+            this.servicedMileage.ReadOnly = true;
+            this.servicedMileage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.servicedMileage.Width = 90;
+            // 
+            // nextServiceDate
+            // 
+            this.nextServiceDate.DataPropertyName = "nextService";
+            this.nextServiceDate.HeaderText = "Next Service";
+            this.nextServiceDate.Name = "nextServiceDate";
+            this.nextServiceDate.ReadOnly = true;
+            this.nextServiceDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.nextServiceDate.Width = 90;
+            // 
+            // nextServiceMileage
+            // 
+            this.nextServiceMileage.DataPropertyName = "nextServiceMileage";
+            this.nextServiceMileage.HeaderText = "Next Service Mileage";
+            this.nextServiceMileage.Name = "nextServiceMileage";
+            this.nextServiceMileage.ReadOnly = true;
+            this.nextServiceMileage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.nextServiceMileage.Width = 90;
+            // 
+            // weight
+            // 
+            this.weight.DataPropertyName = "weight";
+            this.weight.HeaderText = "Weight";
+            this.weight.Name = "weight";
+            this.weight.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.weight.Width = 90;
+            // 
+            // brand
+            // 
+            this.brand.DataPropertyName = "brand";
+            this.brand.HeaderText = "Brand";
+            this.brand.Name = "brand";
+            this.brand.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.brand.Width = 140;
+            // 
+            // quantity
+            // 
+            this.quantity.DataPropertyName = "quantity";
+            this.quantity.HeaderText = "Qty";
+            this.quantity.Name = "quantity";
+            this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.quantity.Width = 60;
+            // 
+            // oilPrice
+            // 
+            this.oilPrice.DataPropertyName = "oilPrice";
+            this.oilPrice.HeaderText = "Oil Price";
+            this.oilPrice.Name = "oilPrice";
+            this.oilPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.oilPrice.Width = 80;
+            // 
+            // fBrand
+            // 
+            this.fBrand.DataPropertyName = "fBrand";
+            this.fBrand.HeaderText = "Filter Brand";
+            this.fBrand.Name = "fBrand";
+            this.fBrand.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.fBrand.Width = 140;
+            // 
+            // fPrice
+            // 
+            this.fPrice.DataPropertyName = "fPrice";
+            this.fPrice.HeaderText = "Filter Price";
+            this.fPrice.Name = "fPrice";
+            this.fPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.fPrice.Width = 80;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -575,6 +581,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn make;
         private System.Windows.Forms.DataGridViewTextBoxColumn model;
         private System.Windows.Forms.DataGridViewTextBoxColumn year;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label dateSerivcedLabel;
+        private System.Windows.Forms.Label nextServiceLabel;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label nextServiceMileageLabel;
+        private System.Windows.Forms.Label folderPathLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn servicedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn servicedMileage;
         private System.Windows.Forms.DataGridViewTextBoxColumn nextServiceDate;
@@ -585,13 +598,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn oilPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn fBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn fPrice;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label dateSerivcedLabel;
-        private System.Windows.Forms.Label nextServiceLabel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label nextServiceMileageLabel;
-        private System.Windows.Forms.Label folderPathLabel;
     }
 }
 

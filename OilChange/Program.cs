@@ -8,31 +8,27 @@ namespace OilChange
     
     static class Global
     {
+        public static string FileFolderPath { get; set; }
+
+
         public static event EventHandler<string> FilePathChanged;
 
-        public static string FileFolderPath { get; set; }
-        private static string file;
-        public static string FileTarget 
+        private static string filePath;
+        public static string FileTargetPath 
         { 
-            get => file; 
+            get => filePath; 
             set 
             {
-                file = value;
-                FileChanged();
+                filePath = value;
+                FilePathChanged?.Invoke(null, filePath);
             } 
         }
 
         static Global()
         {
             FileFolderPath = AppDomain.CurrentDomain.BaseDirectory;
-            FileTarget = FileFolderPath + "test.csv";
+            FileTargetPath = FileFolderPath + "test.csv";
         }
-
-        public static void FileChanged()
-        {
-            FilePathChanged?.Invoke(null, FileTarget);
-        }
-
 
     }
     static class Program
