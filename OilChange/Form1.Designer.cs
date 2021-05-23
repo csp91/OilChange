@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.gridCarSelect = new System.Windows.Forms.DataGridView();
+            this.make = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.makeTextBox = new System.Windows.Forms.TextBox();
             this.modelTextBox = new System.Windows.Forms.TextBox();
             this.yearTextBox = new System.Windows.Forms.TextBox();
@@ -49,7 +52,6 @@
             this.fPriceLabel = new System.Windows.Forms.Label();
             this.addCarBtn = new System.Windows.Forms.Button();
             this.updateCarBtn = new System.Windows.Forms.Button();
-            this.addOilLogBtn = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateSerivcedLabel = new System.Windows.Forms.Label();
@@ -61,9 +63,6 @@
             this.servicemileagelabel = new System.Windows.Forms.Label();
             this.laborHourTextBox = new System.Windows.Forms.TextBox();
             this.laborHourlbl = new System.Windows.Forms.Label();
-            this.make = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarSelect)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,12 +74,39 @@
             this.make,
             this.model,
             this.year});
-            this.gridCarSelect.Location = new System.Drawing.Point(617, 29);
+            this.gridCarSelect.Location = new System.Drawing.Point(542, 24);
             this.gridCarSelect.Name = "gridCarSelect";
             this.gridCarSelect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCarSelect.Size = new System.Drawing.Size(836, 231);
             this.gridCarSelect.TabIndex = 0;
+            this.gridCarSelect.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCarSelect_CellClick);
             this.gridCarSelect.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridCarSelect_DataBindingComplete);
+            // 
+            // make
+            // 
+            this.make.DataPropertyName = "Make";
+            this.make.HeaderText = "Make";
+            this.make.Name = "make";
+            this.make.ReadOnly = true;
+            this.make.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.make.Width = 130;
+            // 
+            // model
+            // 
+            this.model.DataPropertyName = "Model";
+            this.model.HeaderText = "Model";
+            this.model.Name = "model";
+            this.model.ReadOnly = true;
+            this.model.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.model.Width = 160;
+            // 
+            // year
+            // 
+            this.year.DataPropertyName = "Year";
+            this.year.HeaderText = "Year";
+            this.year.Name = "year";
+            this.year.ReadOnly = true;
+            this.year.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // makeTextBox
             // 
@@ -254,15 +280,6 @@
             this.updateCarBtn.Text = "Update";
             this.updateCarBtn.UseVisualStyleBackColor = true;
             // 
-            // addOilLogBtn
-            // 
-            this.addOilLogBtn.Location = new System.Drawing.Point(359, 617);
-            this.addOilLogBtn.Name = "addOilLogBtn";
-            this.addOilLogBtn.Size = new System.Drawing.Size(75, 23);
-            this.addOilLogBtn.TabIndex = 23;
-            this.addOilLogBtn.Text = "Add";
-            this.addOilLogBtn.UseVisualStyleBackColor = true;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "dd MMM yyyy";
@@ -361,32 +378,6 @@
             this.laborHourlbl.TabIndex = 37;
             this.laborHourlbl.Text = "Labor (hours)";
             // 
-            // make
-            // 
-            this.make.DataPropertyName = "Make";
-            this.make.HeaderText = "Make";
-            this.make.Name = "make";
-            this.make.ReadOnly = true;
-            this.make.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.make.Width = 130;
-            // 
-            // model
-            // 
-            this.model.DataPropertyName = "Model";
-            this.model.HeaderText = "Model";
-            this.model.Name = "model";
-            this.model.ReadOnly = true;
-            this.model.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.model.Width = 160;
-            // 
-            // year
-            // 
-            this.year.DataPropertyName = "Year";
-            this.year.HeaderText = "Year";
-            this.year.Name = "year";
-            this.year.ReadOnly = true;
-            this.year.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,7 +394,6 @@
             this.Controls.Add(this.dateSerivcedLabel);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.addOilLogBtn);
             this.Controls.Add(this.updateCarBtn);
             this.Controls.Add(this.addCarBtn);
             this.Controls.Add(this.fPriceLabel);
@@ -457,7 +447,6 @@
         private System.Windows.Forms.Label fPriceLabel;
         private System.Windows.Forms.Button addCarBtn;
         private System.Windows.Forms.Button updateCarBtn;
-        private System.Windows.Forms.Button addOilLogBtn;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label dateSerivcedLabel;
