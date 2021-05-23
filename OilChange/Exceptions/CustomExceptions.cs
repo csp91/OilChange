@@ -23,4 +23,15 @@ namespace OilChange.Exceptions
         {
         }
     }
+
+    class SerializationEx : Exception
+    {
+        public SerializationEx()
+        {
+        }
+
+        public SerializationEx(String message) : base(message)
+        {
+        }
+    }
 }

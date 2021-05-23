@@ -8,41 +8,27 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Threading;
+using OilChange.Util;
 
 namespace OilChange.Services
 {
     class VehicleService : ICarService
     {
+        FileStream fsw = null;
+        FileStream fsr = null;
+        StreamWriter sw = null;
+        StreamReader sr = null;
 
-        public async void AddVehicleService(string make, string model, string year)
+        public async void AddVehicleService(Vehicle car, Oil oil, double labor, DateTime sDate, int sMileage, DateTime nextService, int nextMileage)
         {
-            string fileTarget = Global.FileTargetPath;
-            FileStream fsw = null;
-            FileStream fsr = null;
-            StreamWriter sw = null;
-            StreamReader sr = null;
-
             try
             {
-                if (!File.Exists(fileTarget))
-                {
-                    File.Create(fileTarget).Close();
+                //Append to the file
+                FileUtils.OpenFileStreamers(ref fsw, ref fsr, ref sr, ref sw);
 
-                    for(int i = 0; i > 3; i++)
-                    {
-                        if (File.Exists(fileTarget)) break;
-                        Thread.Sleep(1500);
-                    }
-                }
-
-                fsw = new FileStream(fileTarget, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
-                fsr = new FileStream(fileTarget, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
-                sw = new StreamWriter(fsw);
-                sr = new StreamReader(fsr);
-
+                //Generate new ID by reading the highest id number from the file and adding 1.
                 int nextId = 0;
                 string line = "";
-
                 while ((line = sr.ReadLine()) != null)
                 {
                     if (Int32.TryParse(line.Split(',')[0], out int id))
@@ -51,24 +37,48 @@ namespace OilChange.Services
                     }
                 }
 
-                if (make == "" || model == "" || !Int32.TryParse(year, out int x)) throw new InvalidValueException();
-                await sw.WriteLineAsync(String.Format("{0},{1},{2},{3},{4}", nextId, make, model, year, "[]"));
+                //Check for invalid values and empty string
+                if (car.Make == "" ||
+                    car.Model == "" ||
+                    car.Year.ToString() == "" ||
+                    oil.Weight == "" ||
+                    oil.Brand == "")
+                {
+                    throw new InvalidValueException("No empty string");
+                }
+
+
+                await sw.WriteLineAsync(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14}",
+                    nextId,
+                    car.Make,
+                    car.Model,
+                    car.Year,
+                    oil.Weight,
+                    oil.Brand,
+                    oil.Quantity,
+                    oil.OilPrice,
+                    oil.FBrand,
+                    oil.FPrice,
+                    labor,
+                    sDate.ToString("MM/dd/yyyy"),
+                    sMileage,
+                    nextService.ToString("MM/dd/yyyy"),
+                    nextMileage
+                    ));
 
             }
-            catch (InvalidValueException)
+            catch (InvalidValueException ex)
             {
-                MessageBox.Show("Unable to parse a value because it is empty or invalid");
+                MessageBox.Show(ex.Message);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
             finally
             {
-                sw?.Close();
-                sr?.Close();
-                fsw?.Close();
-                fsr?.Close();
+                //Close Write/Read Streamer objects 
+                FileUtils.CloseFileStreamers(sr,sw,fsw,fsr);
             };
         }
 

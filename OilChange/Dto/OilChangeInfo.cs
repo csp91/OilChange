@@ -8,39 +8,39 @@ namespace OilChange.Dto
 {
     class OilChangeInfo
     {
-        public string Weight { get; set; }
-        public string Brand { get; set; }
-        public double Quantity { get; set; }
-        public double OilPrice { get; set; }
-        public string FBrand { get; set; }
-        public double FPrice { get; set; }
+        [System.ComponentModel.Browsable(false)] //Id will not be passed to the table
+        public int Id { get; set; }
+        public Vehicle Car { get; set; }
+        public Oil Oil { get; set; }
+        public double LaborHours { get; set; }
         public DateTime ServicedDate { get; set; }
         public int ServicedMileage { get; set; }
-        public DateTime? NextService { get; set; }
-        public int? NextServiceMileage { get; set; }
+        public DateTime NextService { get; set; }
+        public int NextServiceMileage { get; set; }
 
-        public OilChangeInfo(string weight, string brand, double quantity, double oilPrice, string fBrand, double fPrice, DateTime servicedDate, int servicedMileage, DateTime? nextService, int? nextServiceMileage)
+        public OilChangeInfo(int id, string make, string model, int year, string weight, string brand, double quantity, double oilPrice, string fBrand, double fPrice, double laborHours, DateTime servicedDate, int servicedMileage, DateTime nextService, int nextServiceMileage)
         {
-            Weight = weight ?? throw new ArgumentNullException(nameof(weight));
-            Brand = brand ?? throw new ArgumentNullException(nameof(brand));
-            Quantity = quantity;
-            OilPrice = oilPrice;
-            FBrand = fBrand ?? throw new ArgumentNullException(nameof(fBrand));
-            FPrice = fPrice;
+            Id = id;
+
+            Vehicle car = new Vehicle(make, model, year);
+            this.Car = car;
+
+            Oil oil = new Oil(weight, brand, quantity, oilPrice, fBrand, fPrice);
+            this.Oil = oil;
+
+            LaborHours = laborHours;
             ServicedDate = servicedDate;
             ServicedMileage = servicedMileage;
             NextService = nextService;
             NextServiceMileage = nextServiceMileage;
         }
 
-        public OilChangeInfo(Oil oil, DateTime servicedDate, int servicedMileage, DateTime? nextService, int? nextServiceMileage)
+        public OilChangeInfo(int id, Vehicle car, Oil oil, double laborHours, DateTime servicedDate, int servicedMileage, DateTime nextService, int nextServiceMileage)
         {
-            Weight = oil.Weight ?? throw new ArgumentNullException();
-            Brand = oil.Brand ?? throw new ArgumentNullException();
-            Quantity = oil.Quantity;
-            OilPrice = oil.OilPrice;
-            FBrand = oil.FBrand ?? throw new ArgumentNullException();
-            FPrice = oil.FPrice;
+            Id = id;
+            Car = car;
+            Oil = oil;
+            LaborHours = laborHours;
             ServicedDate = servicedDate;
             ServicedMileage = servicedMileage;
             NextService = nextService;
