@@ -14,6 +14,8 @@ namespace OilChange
 {
     public partial class Form1 : Form
     {
+        const double laborCost = 15.00;
+        const double salesTax = 0.7;
         //Fields
         string fileTarget = Global.FileTargetPath;
         IEnumerable<string> eLines; //String array when file is read
@@ -59,7 +61,7 @@ namespace OilChange
                 try
                 {
 
-
+                    
                     //Parse the data from textboxes/////
                     //Car Textboxes
                     string make = makeTextBox.Text;
@@ -154,31 +156,48 @@ namespace OilChange
         private void updateCarList(List<OilChangeInfo> s) //s is the passed List of cars from the file
         {
             //Updates the main source
-            Global.MainArraySource = s; 
+            Global.MainArraySource = s;
 
+            //Update display table
+            rebindGrid(s);
+
+        }
+
+        private void rebindGrid(List<OilChangeInfo> oci)
+        {
+            
             //Updates the displayed table
-            var bind = Global.MainArraySource.Select(x =>
-                        new {
-                            Id = x.Id,
-                            Make = x.Car.Make,
-                            Model = x.Car.Model,
-                            Year = x.Car.Year,
-                            Weight = x.Oil.Weight,
-                            Brand = x.Oil.Brand,
-                            Quantity = x.Oil.Quantity,
-                            OilPrice = x.Oil.OilPrice,
-                            FBrand = x.Oil.FBrand,
-                            FPrice = x.Oil.FPrice,
-                            ServicedDate = x.ServicedDate,
-                            ServicedMileage = x.ServicedMileage,
-                            LaborHour = x.LaborHours,
-                            NextServiceDate = x.NextService,
-                            NextMileage = x.NextServiceMileage
-                        }).ToList();
+            var bind = oci.Select(x => {
+
+                double subtotal = (x.LaborHours * laborCost) + (x.Oil.OilPrice * x.Oil.Quantity) + x.Oil.FPrice;
+                double Total = subtotal + (subtotal * salesTax);
+
+
+
+                return new
+                {
+                    Id = x.Id,
+                    Make = x.Car.Make,
+                    Model = x.Car.Model,
+                    Year = x.Car.Year,
+                    Weight = x.Oil.Weight,
+                    Brand = x.Oil.Brand,
+                    Quantity = x.Oil.Quantity,
+                    OilPrice = String.Format("{0:C}", x.Oil.OilPrice),
+                    FBrand = x.Oil.FBrand,
+                    FPrice = String.Format("{0:C}", x.Oil.FPrice),
+                    ServicedDate = x.ServicedDate,
+                    ServicedMileage = x.ServicedMileage,
+                    LaborHour = x.LaborHours,
+                    NextServiceDate = x.NextService,
+                    NextMileage = x.NextServiceMileage,
+                    TotalPrice = String.Format("{0:C}",Total),
+                    };
+                }
+            ).ToList();
 
             gridCarSelect.AutoGenerateColumns = false;
             gridCarSelect.DataSource = bind;
-
         }
 
         private OilChangeInfo parseObjToOilChangeInfo(object obj)
@@ -248,6 +267,40 @@ namespace OilChange
             dateTimePicker2.Value = DateTime.Now.AddMonths(3);
             sMileageTxtbox.Text = "";
             nextSMileageTxtbox.Text = "";
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            List<OilChangeInfo> lists = Global.MainArraySource;
+            List<OilChangeInfo> searchedCars = new List<OilChangeInfo>();
+            DateTime a = DateTime.Today;
+            DateTime reference = new DateTime(1, 1, 1);
+
+            for (int x = 0; x < lists.Count; x++)
+            {
+                DateTime b = lists[x].NextService;
+                TimeSpan span = b - a;
+                int months = (reference + span).Month - 1;
+                if (months <= 1)
+                {
+                    searchedCars.Add(lists[x]);
+                }
+            }
+            rebindGrid(searchedCars);
+            searchButton.Enabled = false;
+            clearFilterBtn.Enabled = true;
+        }
+
+        private void clearFilterBtn_Click(object sender, EventArgs e)
+        {
+            if (!searchButton.Enabled)
+            {
+                ToggleReadOnly(makeTextBox, modelTextBox, yearTextBox, weightTextBox, brandTextBox, qtyTextBox, oPriceTextBox, fBrandTextBox, fPriceTextBox, laborHourTextBox, sMileageTxtbox, nextSMileageTxtbox);
+                searchButton.Enabled = true;
+                rebindGrid(Global.MainArraySource);
+                clearFilterBtn.Enabled = false;
+            }
+
         }
     }
 }

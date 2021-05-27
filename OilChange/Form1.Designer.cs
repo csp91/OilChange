@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.gridCarSelect = new System.Windows.Forms.DataGridView();
-            this.make = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.makeTextBox = new System.Windows.Forms.TextBox();
             this.modelTextBox = new System.Windows.Forms.TextBox();
             this.yearTextBox = new System.Windows.Forms.TextBox();
@@ -63,6 +60,22 @@
             this.servicemileagelabel = new System.Windows.Forms.Label();
             this.laborHourTextBox = new System.Windows.Forms.TextBox();
             this.laborHourlbl = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.clearFilterBtn = new System.Windows.Forms.Button();
+            this.make = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NextServiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NextMileage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LaborHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServicedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OilPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarSelect)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,40 +86,25 @@
             this.gridCarSelect.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.make,
             this.model,
-            this.year});
-            this.gridCarSelect.Location = new System.Drawing.Point(542, 24);
+            this.year,
+            this.NextServiceDate,
+            this.NextMileage,
+            this.LaborHour,
+            this.ServicedDate,
+            this.Weight,
+            this.Brand,
+            this.Quantity,
+            this.OilPrice,
+            this.FBrand,
+            this.FPrice,
+            this.totalCost});
+            this.gridCarSelect.Location = new System.Drawing.Point(495, 13);
             this.gridCarSelect.Name = "gridCarSelect";
             this.gridCarSelect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridCarSelect.Size = new System.Drawing.Size(836, 231);
+            this.gridCarSelect.Size = new System.Drawing.Size(720, 390);
             this.gridCarSelect.TabIndex = 0;
             this.gridCarSelect.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCarSelect_CellClick);
             this.gridCarSelect.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridCarSelect_DataBindingComplete);
-            // 
-            // make
-            // 
-            this.make.DataPropertyName = "Make";
-            this.make.HeaderText = "Make";
-            this.make.Name = "make";
-            this.make.ReadOnly = true;
-            this.make.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.make.Width = 130;
-            // 
-            // model
-            // 
-            this.model.DataPropertyName = "Model";
-            this.model.HeaderText = "Model";
-            this.model.Name = "model";
-            this.model.ReadOnly = true;
-            this.model.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.model.Width = 160;
-            // 
-            // year
-            // 
-            this.year.DataPropertyName = "Year";
-            this.year.HeaderText = "Year";
-            this.year.Name = "year";
-            this.year.ReadOnly = true;
-            this.year.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // makeTextBox
             // 
@@ -263,7 +261,7 @@
             // 
             // addCarBtn
             // 
-            this.addCarBtn.Location = new System.Drawing.Point(31, 419);
+            this.addCarBtn.Location = new System.Drawing.Point(25, 323);
             this.addCarBtn.Name = "addCarBtn";
             this.addCarBtn.Size = new System.Drawing.Size(75, 23);
             this.addCarBtn.TabIndex = 20;
@@ -273,7 +271,7 @@
             // 
             // updateCarBtn
             // 
-            this.updateCarBtn.Location = new System.Drawing.Point(137, 419);
+            this.updateCarBtn.Location = new System.Drawing.Point(106, 323);
             this.updateCarBtn.Name = "updateCarBtn";
             this.updateCarBtn.Size = new System.Drawing.Size(75, 23);
             this.updateCarBtn.TabIndex = 22;
@@ -378,11 +376,136 @@
             this.laborHourlbl.TabIndex = 37;
             this.laborHourlbl.Text = "Labor (hours)";
             // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(25, 374);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(90, 23);
+            this.searchButton.TabIndex = 38;
+            this.searchButton.Text = "Changes Due";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // clearFilterBtn
+            // 
+            this.clearFilterBtn.Location = new System.Drawing.Point(122, 374);
+            this.clearFilterBtn.Name = "clearFilterBtn";
+            this.clearFilterBtn.Size = new System.Drawing.Size(75, 23);
+            this.clearFilterBtn.TabIndex = 40;
+            this.clearFilterBtn.Text = "Clear Filter";
+            this.clearFilterBtn.UseVisualStyleBackColor = true;
+            this.clearFilterBtn.Click += new System.EventHandler(this.clearFilterBtn_Click);
+            // 
+            // make
+            // 
+            this.make.DataPropertyName = "Make";
+            this.make.HeaderText = "Make";
+            this.make.Name = "make";
+            this.make.ReadOnly = true;
+            this.make.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.make.Width = 130;
+            // 
+            // model
+            // 
+            this.model.DataPropertyName = "Model";
+            this.model.HeaderText = "Model";
+            this.model.Name = "model";
+            this.model.ReadOnly = true;
+            this.model.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.model.Width = 160;
+            // 
+            // year
+            // 
+            this.year.DataPropertyName = "Year";
+            this.year.HeaderText = "Year";
+            this.year.Name = "year";
+            this.year.ReadOnly = true;
+            this.year.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // NextServiceDate
+            // 
+            this.NextServiceDate.DataPropertyName = "NextServiceDate";
+            this.NextServiceDate.HeaderText = "Next Service Date";
+            this.NextServiceDate.Name = "NextServiceDate";
+            this.NextServiceDate.ReadOnly = true;
+            // 
+            // NextMileage
+            // 
+            this.NextMileage.DataPropertyName = "NextMileage";
+            this.NextMileage.HeaderText = "Next Service Mileage";
+            this.NextMileage.Name = "NextMileage";
+            this.NextMileage.ReadOnly = true;
+            // 
+            // LaborHour
+            // 
+            this.LaborHour.DataPropertyName = "LaborHour";
+            this.LaborHour.HeaderText = "Labor Hours";
+            this.LaborHour.Name = "LaborHour";
+            this.LaborHour.ReadOnly = true;
+            // 
+            // ServicedDate
+            // 
+            this.ServicedDate.DataPropertyName = "ServicedDate";
+            this.ServicedDate.HeaderText = "Last Service";
+            this.ServicedDate.Name = "ServicedDate";
+            this.ServicedDate.ReadOnly = true;
+            // 
+            // Weight
+            // 
+            this.Weight.DataPropertyName = "Weight";
+            this.Weight.HeaderText = "Oil Weight";
+            this.Weight.Name = "Weight";
+            this.Weight.ReadOnly = true;
+            // 
+            // Brand
+            // 
+            this.Brand.DataPropertyName = "Brand";
+            this.Brand.HeaderText = "Oil Brand";
+            this.Brand.Name = "Brand";
+            this.Brand.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity (Qts)";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // OilPrice
+            // 
+            this.OilPrice.DataPropertyName = "OilPrice";
+            this.OilPrice.HeaderText = "Price (per Quart)";
+            this.OilPrice.Name = "OilPrice";
+            this.OilPrice.ReadOnly = true;
+            // 
+            // FBrand
+            // 
+            this.FBrand.DataPropertyName = "FBrand";
+            this.FBrand.HeaderText = "Filter Brand";
+            this.FBrand.Name = "FBrand";
+            this.FBrand.ReadOnly = true;
+            // 
+            // FPrice
+            // 
+            this.FPrice.DataPropertyName = "FPrice";
+            this.FPrice.HeaderText = "Filter Price";
+            this.FPrice.Name = "FPrice";
+            this.FPrice.ReadOnly = true;
+            // 
+            // totalCost
+            // 
+            this.totalCost.DataPropertyName = "TotalPrice";
+            this.totalCost.HeaderText = "Total Price";
+            this.totalCost.Name = "totalCost";
+            this.totalCost.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1519, 764);
+            this.ClientSize = new System.Drawing.Size(1227, 410);
+            this.Controls.Add(this.clearFilterBtn);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.laborHourlbl);
             this.Controls.Add(this.laborHourTextBox);
             this.Controls.Add(this.servicemileagelabel);
@@ -458,9 +581,22 @@
         private System.Windows.Forms.Label servicemileagelabel;
         private System.Windows.Forms.TextBox laborHourTextBox;
         private System.Windows.Forms.Label laborHourlbl;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Button clearFilterBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn make;
         private System.Windows.Forms.DataGridViewTextBoxColumn model;
         private System.Windows.Forms.DataGridViewTextBoxColumn year;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NextServiceDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NextMileage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LaborHour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServicedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Weight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OilPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalCost;
     }
 }
 
