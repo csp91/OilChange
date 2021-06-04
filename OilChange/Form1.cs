@@ -2,6 +2,7 @@
 using OilChange.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -97,7 +98,9 @@ namespace OilChange
 
                     //Display the added data in a message box//
                     string msg = carObj.ToString() + oilObj.ToString();
-                    MessageBox.Show(msg);
+
+                    MessageBox.Show("Car has been successfully added: \n" + msg);
+
                 }
                 catch (Exception ex)
                 {
@@ -236,8 +239,10 @@ namespace OilChange
                 if (prop.Name == "Brand") brand = prop.GetValue(obj) as string;
                 if (prop.Name == "FBrand") fbrand = prop.GetValue(obj) as string;
                 if (prop.Name == "Quantity") qty = (double) prop.GetValue(obj);
-                if (prop.Name == "FPrice") fprice = (double)prop.GetValue(obj);
-                if (prop.Name == "OilPrice") oprice = (double)prop.GetValue(obj);
+                if (prop.Name == "FPrice") 
+                    fprice = double.Parse(prop.GetValue(obj) as string, NumberStyles.Currency);
+                if (prop.Name == "OilPrice") 
+                    oprice = double.Parse(prop.GetValue(obj) as string, NumberStyles.Currency);
 
                 if (prop.Name == "LaborHour") labor = (double)prop.GetValue(obj);
                 if (prop.Name == "ServicedDate") sd = (DateTime) prop.GetValue(obj);
@@ -288,21 +293,34 @@ namespace OilChange
                     searchedCars.Add(lists[x]);
                 }
             }
+
             rebindGrid(searchedCars);
             searchButton.Enabled = false;
+            addCarBtn.Enabled = false;
             clearFilterBtn.Enabled = true;
+            if (!makeTextBox.ReadOnly)
+            {
+                ToggleReadOnly(makeTextBox, modelTextBox, yearTextBox, weightTextBox, brandTextBox, qtyTextBox, oPriceTextBox, fBrandTextBox, fPriceTextBox, laborHourTextBox, sMileageTxtbox, nextSMileageTxtbox);
+            }
+
+            MessageBox.Show("Number of cars due within one month: " + searchedCars.Count);
         }
 
         private void clearFilterBtn_Click(object sender, EventArgs e)
         {
             if (!searchButton.Enabled)
             {
-                ToggleReadOnly(makeTextBox, modelTextBox, yearTextBox, weightTextBox, brandTextBox, qtyTextBox, oPriceTextBox, fBrandTextBox, fPriceTextBox, laborHourTextBox, sMileageTxtbox, nextSMileageTxtbox);
                 searchButton.Enabled = true;
+                addCarBtn.Enabled = true;
                 rebindGrid(Global.MainArraySource);
                 clearFilterBtn.Enabled = false;
             }
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker2.MinDate = dateTimePicker1.Value;
         }
     }
 }

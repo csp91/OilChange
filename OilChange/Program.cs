@@ -29,7 +29,7 @@ namespace OilChange
         static Global()
         {
             BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            FileTargetPath = BaseDirectory + "test.csv";
+            FileTargetPath = BaseDirectory + "OilChangeLog.csv";
             MainArraySource = new List<OilChangeInfo>();
         }
 
