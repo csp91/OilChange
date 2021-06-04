@@ -94,6 +94,10 @@ namespace OilChange
 
                     //Update main source
                     updateCarList(ParseFile(eLines));
+
+                    //Display the added data in a message box//
+                    string msg = carObj.ToString() + oilObj.ToString();
+                    MessageBox.Show(msg);
                 }
                 catch (Exception ex)
                 {

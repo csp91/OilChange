@@ -214,8 +214,7 @@
             this.makeTextBox.Name = "makeTextBox";
             this.makeTextBox.ReadOnly = true;
             this.makeTextBox.Size = new System.Drawing.Size(115, 20);
-            this.makeTextBox.TabIndex = 2;
-            this.makeTextBox.TextChanged += new System.EventHandler(this.makeTextBox_TextChanged);
+            this.makeTextBox.TabIndex = 1;
             // 
             // modelTextBox
             // 
@@ -223,7 +222,7 @@
             this.modelTextBox.Name = "modelTextBox";
             this.modelTextBox.ReadOnly = true;
             this.modelTextBox.Size = new System.Drawing.Size(160, 20);
-            this.modelTextBox.TabIndex = 3;
+            this.modelTextBox.TabIndex = 2;
             // 
             // yearTextBox
             // 
@@ -231,7 +230,7 @@
             this.yearTextBox.Name = "yearTextBox";
             this.yearTextBox.ReadOnly = true;
             this.yearTextBox.Size = new System.Drawing.Size(100, 20);
-            this.yearTextBox.TabIndex = 4;
+            this.yearTextBox.TabIndex = 3;
             // 
             // weightTextBox
             // 
@@ -239,7 +238,7 @@
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.ReadOnly = true;
             this.weightTextBox.Size = new System.Drawing.Size(87, 20);
-            this.weightTextBox.TabIndex = 5;
+            this.weightTextBox.TabIndex = 4;
             // 
             // brandTextBox
             // 
@@ -247,7 +246,7 @@
             this.brandTextBox.Name = "brandTextBox";
             this.brandTextBox.ReadOnly = true;
             this.brandTextBox.Size = new System.Drawing.Size(153, 20);
-            this.brandTextBox.TabIndex = 6;
+            this.brandTextBox.TabIndex = 5;
             // 
             // qtyTextBox
             // 
@@ -255,7 +254,7 @@
             this.qtyTextBox.Name = "qtyTextBox";
             this.qtyTextBox.ReadOnly = true;
             this.qtyTextBox.Size = new System.Drawing.Size(70, 20);
-            this.qtyTextBox.TabIndex = 7;
+            this.qtyTextBox.TabIndex = 6;
             // 
             // fBrandTextBox
             // 
@@ -271,7 +270,7 @@
             this.oPriceTextBox.Name = "oPriceTextBox";
             this.oPriceTextBox.ReadOnly = true;
             this.oPriceTextBox.Size = new System.Drawing.Size(100, 20);
-            this.oPriceTextBox.TabIndex = 9;
+            this.oPriceTextBox.TabIndex = 7;
             // 
             // fPriceTextBox
             // 
@@ -279,7 +278,7 @@
             this.fPriceTextBox.Name = "fPriceTextBox";
             this.fPriceTextBox.ReadOnly = true;
             this.fPriceTextBox.Size = new System.Drawing.Size(100, 20);
-            this.fPriceTextBox.TabIndex = 10;
+            this.fPriceTextBox.TabIndex = 9;
             // 
             // makeLabel
             // 
@@ -367,7 +366,7 @@
             this.addCarBtn.Location = new System.Drawing.Point(25, 323);
             this.addCarBtn.Name = "addCarBtn";
             this.addCarBtn.Size = new System.Drawing.Size(75, 23);
-            this.addCarBtn.TabIndex = 20;
+            this.addCarBtn.TabIndex = 15;
             this.addCarBtn.Text = "Add";
             this.addCarBtn.UseVisualStyleBackColor = true;
             this.addCarBtn.Click += new System.EventHandler(this.addCarBtn_Click);
@@ -380,7 +379,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(28, 235);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(115, 20);
-            this.dateTimePicker1.TabIndex = 27;
+            this.dateTimePicker1.TabIndex = 10;
             // 
             // dateTimePicker2
             // 
@@ -390,7 +389,7 @@
             this.dateTimePicker2.Location = new System.Drawing.Point(25, 297);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(118, 20);
-            this.dateTimePicker2.TabIndex = 28;
+            this.dateTimePicker2.TabIndex = 13;
             this.dateTimePicker2.Value = new System.DateTime(2021, 8, 22, 20, 24, 47, 484);
             // 
             // dateSerivcedLabel
@@ -417,7 +416,7 @@
             this.nextSMileageTxtbox.Name = "nextSMileageTxtbox";
             this.nextSMileageTxtbox.ReadOnly = true;
             this.nextSMileageTxtbox.Size = new System.Drawing.Size(120, 20);
-            this.nextSMileageTxtbox.TabIndex = 31;
+            this.nextSMileageTxtbox.TabIndex = 14;
             // 
             // nextServiceMileageLabel
             // 
@@ -442,7 +441,7 @@
             this.sMileageTxtbox.Name = "sMileageTxtbox";
             this.sMileageTxtbox.ReadOnly = true;
             this.sMileageTxtbox.Size = new System.Drawing.Size(120, 20);
-            this.sMileageTxtbox.TabIndex = 34;
+            this.sMileageTxtbox.TabIndex = 11;
             // 
             // servicemileagelabel
             // 
@@ -459,7 +458,7 @@
             this.laborHourTextBox.Name = "laborHourTextBox";
             this.laborHourTextBox.ReadOnly = true;
             this.laborHourTextBox.Size = new System.Drawing.Size(100, 20);
-            this.laborHourTextBox.TabIndex = 36;
+            this.laborHourTextBox.TabIndex = 12;
             // 
             // laborHourlbl
             // 
@@ -475,7 +474,7 @@
             this.searchButton.Location = new System.Drawing.Point(25, 374);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(90, 23);
-            this.searchButton.TabIndex = 38;
+            this.searchButton.TabIndex = 16;
             this.searchButton.Text = "Changes Due";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
@@ -485,7 +484,7 @@
             this.clearFilterBtn.Location = new System.Drawing.Point(122, 374);
             this.clearFilterBtn.Name = "clearFilterBtn";
             this.clearFilterBtn.Size = new System.Drawing.Size(75, 23);
-            this.clearFilterBtn.TabIndex = 40;
+            this.clearFilterBtn.TabIndex = 17;
             this.clearFilterBtn.Text = "Clear Filter";
             this.clearFilterBtn.UseVisualStyleBackColor = true;
             this.clearFilterBtn.Click += new System.EventHandler(this.clearFilterBtn_Click);

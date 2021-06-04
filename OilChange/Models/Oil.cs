@@ -24,5 +24,9 @@ namespace OilChange
             FBrand = fbrand == "" ? "Unknown" : fbrand;
             FPrice = fprice;
         }
+        public override string ToString()
+        {
+            return Weight + " " + Brand + " " + Quantity + " " + OilPrice + " " + FBrand + " ";
+        }
     }
 }

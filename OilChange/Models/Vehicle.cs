@@ -19,5 +19,9 @@ namespace OilChange
             Model = inmodel;
             Year = inyear;
         }
-    }
+        public override string ToString()
+        {
+            return Year + " " + Make + " " + Model + " ";
+        }
+    }   
 }
